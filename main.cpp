@@ -1,44 +1,11 @@
 #include <iostream>
-#include "stomach.h"
-
-class Person {
-    std::string name;
-public:
-    Person(const std::string &name) : name(name) {
-        std::cout << "person constructor" << std::endl;
-    }
-
-    virtual ~Person() {
-        std::cout << "person destructor" << std::endl;
-    }
-
-    const std::string &getName() const {
-        return name;
-    }
-
-    void setName(const std::string &name) {
-        Person::name = name;
-    }
-
-private:
-    Stomach stomach;
-
-public:
-    bool isHealthy(){
-        return stomach.statusCheck();
-    }
-
-    void punch() {
-        stomach.gotHit();
-    }
-};
-
-
+#include "person.h"
 
 int main() {
-    Person bountyGuy("Greef Karga");
+    Person bountyGuy("Greef Karga", 60);
     std::cout << bountyGuy.getName() << " is " << (bountyGuy.isHealthy() ? "ok" : "not doing well") << std::endl;
     bountyGuy.punch();
     std::cout << bountyGuy.getName() << " is " << (bountyGuy.isHealthy() ? "ok" : "not doing well") << std::endl;
+    std::cout << bountyGuy.getName() << "'s heart is " << (bountyGuy.heartOk() ? "ok" : "beating slow") << std::endl;
     return 0;
 }
